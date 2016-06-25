@@ -1,3 +1,14 @@
 <div class="search">
-  <input type="text" name="search" placeholder="Search...">
+  <form ng-submit="searchSong(query)">
+
+    <input type="text" name="search"
+    ng-focus="openSuggestors = true"
+    ng-blur="openSuggestors = false"
+    ng-model="query"
+    placeholder="Search..."/>
+  </form>
+  <div class="suggestors" ng-show="openSuggestors">
+    <p ng-repeat="suggestion in queries | filter:searchText | limitTo:5 track by $index" ng-click="querySuggestion(suggestion)"> {{suggestion}} </p>
+    <p ng-if="queries.length <1">     </p>
+  </div>
 </div>

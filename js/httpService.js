@@ -1,10 +1,8 @@
-var app = angular.module('directiveWorkshop');
+var app = angular.module('musicApp');
 
-app.service('mainService', function($http){
-	this.getData = function(artist) {
-	  return $http({'method': 'JSONP', 'url': 'https://itunes.apple.com/search?term=' + artist + '&callback=JSON_CALLBACK' })
-      .then(function (data) {
-        return data;
-      });
+app.service('httpService', function($http){
+	this.getData = function(query) {
+	  return $http({'method': 'JSONP', 'url': 'https://itunes.apple.com/search?term=' + query + '&callback=JSON_CALLBACK' })
+
 	  };
 })
